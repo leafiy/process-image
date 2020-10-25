@@ -12,7 +12,7 @@
  * @param {boolean} options.lowContrast 低对比度
  *
  */
-module.exports = processImage = (url, options = null) => {
+module.exports = (url, options = null) => {
   if (!url) {
     console.error("url is required!");
     return;
