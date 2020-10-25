@@ -20,9 +20,6 @@ module.exports = (url, options = null) => {
   if (!options) return url;
 
   if (url.includes("amazonaws.com")) {
-    //https://web-app-temp.s3-us-west-1.amazonaws.com/images/24102020/e77be977-8699-4bf1-afc0-e5158d4ef1de.jpg
-    //https://web-app-temp.s3-us-west-1.amazonaws.com/images/24102020/w_100/e77be977-8699-4bf1-afc0-e5158d4ef1de.jpg
-
     if (options.resize) {
       let params = [
         url.slice(0, url.lastIndexOf("/")),
