@@ -1,5 +1,5 @@
 {
-  "name": "process-image",
+  "name": "@leafiy/process-image",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:leafiy/process-image.git",
