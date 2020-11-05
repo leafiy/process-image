@@ -17,6 +17,13 @@ module.exports = (url, options = null) => {
     console.error("url is required!");
     return;
   }
+  if (Array.isArray(url)) {
+    url = url[0].url;
+  }
+  if (typeof url === "object" && url.url) {
+    url = url.url;
+  }
+
   if (!options) return url;
 
   if (url.includes("amazonaws.com")) {
