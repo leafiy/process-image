@@ -34,7 +34,7 @@ module.exports = (url, options = null) => {
       ];
       if (options.resize === "sm") {
         return `${params[0]}/w_100/${params[1]}`;
-      } else if (options.resize === "mid") {
+      } else if (options.resize === "mid" || options.resize === "md") {
         return `${params[0]}/w_500/${params[1]}`;
       } else if (options.resize === "lg") {
         return `${params[0]}/w_1000/${params[1]}`;
@@ -56,7 +56,9 @@ module.exports = (url, options = null) => {
         case "mid":
           result.push("resize,h_500");
           break;
-
+        case "md":
+          result.push("resize,h_500");
+          break;
         case "lg":
           result.push("resize,h_1000");
           break;
