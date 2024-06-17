@@ -13,104 +13,105 @@
  *
  */
 module.exports = (url, options = null) => {
-  if (!url) {
-    console.error("url is required!");
-    return;
-  }
-  if (Array.isArray(url)) {
-    url = url[0].url;
-  }
-  if (typeof url === "object" && url.url) {
-    url = url.url;
-  }
+  return url;
+  // if (!url) {
+  //   console.error("url is required!");
+  //   return;
+  // }
+  // if (Array.isArray(url)) {
+  //   url = url[0].url;
+  // }
+  // if (typeof url === "object" && url.url) {
+  //   url = url.url;
+  // }
 
-  if (!options) return url;
+  // if (!options) return url;
 
-  if (url.includes("amazonaws.com")) {
-    if (options.resize) {
-      let params = [
-        url.slice(0, url.lastIndexOf("/")),
-        url.slice(url.lastIndexOf("/") + 1),
-      ];
-      if (options.resize === "sm") {
-        return `${params[0]}/w_100/${params[1]}`;
-      } else if (options.resize === "mid" || options.resize === "md") {
-        return `${params[0]}/w_500/${params[1]}`;
-      } else if (options.resize === "lg") {
-        return `${params[0]}/w_1000/${params[1]}`;
-      } else {
-        return url;
-      }
-    } else {
-      return url;
-    }
-  } else {
-    const result = [];
+  // if (url.includes("amazonaws.com")) {
+  //   if (options.resize) {
+  //     let params = [
+  //       url.slice(0, url.lastIndexOf("/")),
+  //       url.slice(url.lastIndexOf("/") + 1),
+  //     ];
+  //     if (options.resize === "sm") {
+  //       return `${params[0]}/w_100/${params[1]}`;
+  //     } else if (options.resize === "mid" || options.resize === "md") {
+  //       return `${params[0]}/w_500/${params[1]}`;
+  //     } else if (options.resize === "lg") {
+  //       return `${params[0]}/w_1000/${params[1]}`;
+  //     } else {
+  //       return url;
+  //     }
+  //   } else {
+  //     return url;
+  //   }
+  // } else {
+  //   const result = [];
 
-    if (options.resize) {
-      switch (options.resize) {
-        case "sm":
-          result.push("resize,h_100");
-          break;
+  //   if (options.resize) {
+  //     switch (options.resize) {
+  //       case "sm":
+  //         result.push("resize,h_100");
+  //         break;
 
-        case "mid":
-          result.push("resize,h_500");
-          break;
-        case "md":
-          result.push("resize,h_500");
-          break;
-        case "lg":
-          result.push("resize,h_1000");
-          break;
+  //       case "mid":
+  //         result.push("resize,h_500");
+  //         break;
+  //       case "md":
+  //         result.push("resize,h_500");
+  //         break;
+  //       case "lg":
+  //         result.push("resize,h_1000");
+  //         break;
 
-        default:
-          result.push(`resize,h_${options.resize}`);
-          break;
-      }
-    }
+  //       default:
+  //         result.push(`resize,h_${options.resize}`);
+  //         break;
+  //     }
+  //   }
 
-    if (options.rotate) {
-      switch (parseInt(options.rotate)) {
-        case 8:
-          result.push("rotate,270");
-          break;
+  //   if (options.rotate) {
+  //     switch (parseInt(options.rotate)) {
+  //       case 8:
+  //         result.push("rotate,270");
+  //         break;
 
-        case 3:
-          result.push("rotate,180");
-          break;
+  //       case 3:
+  //         result.push("rotate,180");
+  //         break;
 
-        case 6:
-          result.push("rotate,90");
-          break;
+  //       case 6:
+  //         result.push("rotate,90");
+  //         break;
 
-        default:
-          break;
-      }
-    }
+  //       default:
+  //         break;
+  //     }
+  //   }
 
-    if (options.blur) {
-      switch (parseInt(options.blur)) {
-        case 1: // 轻度模糊
-          result.push("blur,r_3,s_3");
-          break;
+  //   if (options.blur) {
+  //     switch (parseInt(options.blur)) {
+  //       case 1: // 轻度模糊
+  //         result.push("blur,r_3,s_3");
+  //         break;
 
-        case 2: // 重度模糊
-          result.push("blur,r_8,s_8");
-          break;
+  //       case 2: // 重度模糊
+  //         result.push("blur,r_8,s_8");
+  //         break;
 
-        default:
-          break;
-      }
-    }
+  //       default:
+  //         break;
+  //     }
+  //   }
 
-    if (options.circle) {
-      result.push(`circle,r_${options.circle}`);
-    }
+  //   if (options.circle) {
+  //     result.push(`circle,r_${options.circle}`);
+  //   }
 
-    if (options.lowContrast) {
-      result.push(`contrast,-80`);
-    }
+  //   if (options.lowContrast) {
+  //     result.push(`contrast,-80`);
+  //   }
 
-    return `${url}?x-oss-process=image/${result.join("/")}`;
-  }
+  //   return `${url}?x-oss-process=image/${result.join("/")}`;
+  // }
 };
